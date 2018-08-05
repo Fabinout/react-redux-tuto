@@ -4,8 +4,11 @@ import SearchBar from "./components/search_bar"
 import YTSearch from 'youtube-api-search'
 import VideoList from './components/video_list'
 import VideoDetail from "./components/video_detail"
+import _ from "lodash"
 
 const API_KEY = "AIzaSyD46zrm7vSd6zHLdLuW-sh5_PSqlxnT83k";
+
+const initialSearchTerm = "react redux";
 
 class App extends Component {
     constructor(props) {
@@ -14,7 +17,7 @@ class App extends Component {
         this.videoSearch();
     }
 
-    videoSearch(term = "react redux") {
+    videoSearch(term = initialSearchTerm) {
         YTSearch({key: API_KEY, term: term}, videos => {
             this.setState({
                 videos: videos,
@@ -24,9 +27,16 @@ class App extends Component {
     }
 
     render() {
+
+        const videoSearch = _.debounce((term) => {
+                this.videoSearch(term)
+            }, 300
+        );
         return (
             <div>
-                <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
+                <SearchBar
+                    onSearchTermChange={term => videoSearch(term)}
+                    startingValue={initialSearchTerm}/>
                 <VideoDetail video={this.state.selectedVideo}/>
                 <VideoList videos={this.state.videos}
                            onVideoSelect={selectedVideo => this.setState({selectedVideo})}/>
