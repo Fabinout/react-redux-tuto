@@ -16,10 +16,7 @@
 }
 .list-group-item {
     cursor : pointer;
-    background-size: 200% 100%;
-    margin-left:10px;
-    transition:all 0.2s linear;
 }
 .list-group-item:hover {
-    background-position:right bottom;
+    background-color: #eee;
 }
