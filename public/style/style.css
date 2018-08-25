@@ -17,7 +17,6 @@
 .list-group-item {
     cursor : pointer;
     background-size: 200% 100%;
-    background: linear-gradient(to right, white 50%, #eee 50%) left bottom;
     margin-left:10px;
     transition:all 0.2s linear;
 }
