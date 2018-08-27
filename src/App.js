@@ -5,8 +5,7 @@ import VideoList from './components/video_list'
 import VideoDetail from "./components/video_detail"
 import _ from "lodash"
 
-const API_KEY = "AIzaSyD46zrm7vSd6zHLdLuW-sh5_PSqlxnT83k";
-
+const API_KEY = "AIzaSyDhnAMdrwDXsX-3kayM6Ej8ihcu0OFDnhA";
 const initialSearchTerm = "react redux";
 
 class App extends Component {
